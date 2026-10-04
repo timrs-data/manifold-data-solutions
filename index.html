@@ -116,6 +116,44 @@
         max-width: 100%;
         height: auto;
       }
+
+      .data-flow-stream {
+        animation: flowAnimation 3s ease-in-out infinite;
+      }
+
+      @keyframes flowAnimation {
+        0%, 100% {
+          opacity: 0.6;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .data-flow-stream:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .data-flow-stream:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+
+      .data-flow-stream:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      .arrow-flow {
+        animation: arrowPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes arrowPulse {
+        0%, 100% {
+          opacity: 0.7;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
     </style>
   </head>
 
@@ -123,8 +161,8 @@
     <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-6 py-4">
         <div class="flex items-center justify-between gap-6">
-          <a href="#top" class="flex items-center gap-2 group" aria-label="Manifold Data Solutions home">
-            <img src="Manifold Data Solutions Logo - No Text.png" alt="Manifold Data Solutions" class="w-10 h-10" />
+          <a href="#top" class="flex items-center gap-1 group" aria-label="Manifold Data Solutions home">
+            <img src="Manifold Data Solutions Logo - No Text.png" alt="Manifold Data Solutions" class="w-12 h-12" />
             <img src="Manifold Data Solutions Logo - Text Only.png" alt="Manifold Data Solutions" class="h-8" />
           </a>
 
@@ -184,86 +222,71 @@
 
             <div class="relative">
               <div class="glass-card rounded-3xl p-8 shadow-soft dashboard-card">
-                <!-- Logo at top -->
-                <div class="flex justify-center mb-8">
-                  <img src="Manifold Data Solutions Logo.png" alt="Manifold Data Solutions" class="w-16 h-16" />
-                </div>
-
-                <!-- Chart visualization -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg">
-                  <div class="mb-6">
-                    <p class="text-sm text-slate-500 font-semibold uppercase tracking-wide">Performance Trend</p>
-                    <p class="text-2xl font-bold text-slate-900 mt-2">Growth Trajectory</p>
-                  </div>
-
-                  <!-- SVG Chart -->
-                  <svg viewBox="0 0 400 250" class="w-full h-auto" preserveAspectRatio="xMidYMid meet">
-                    <!-- Grid lines -->
-                    <line x1="40" y1="200" x2="380" y2="200" stroke="#e2e8f0" stroke-width="1" />
-                    <line x1="40" y1="150" x2="380" y2="150" stroke="#e2e8f0" stroke-width="1" />
-                    <line x1="40" y1="100" x2="380" y2="100" stroke="#e2e8f0" stroke-width="1" />
-                    <line x1="40" y1="50" x2="380" y2="50" stroke="#e2e8f0" stroke-width="1" />
-
-                    <!-- Axes -->
-                    <line x1="40" y1="30" x2="40" y2="200" stroke="#64748b" stroke-width="2" />
-                    <line x1="40" y1="200" x2="380" y2="200" stroke="#64748b" stroke-width="2" />
-
-                    <!-- Area under curve (gradient) -->
-                    <defs>
-                      <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#00a3a3;stop-opacity:0.3" />
-                        <stop offset="100%" style="stop-color:#00a3a3;stop-opacity:0" />
-                      </linearGradient>
-                    </defs>
-                    <path d="M 60 170 L 120 140 L 180 110 L 240 80 L 300 50 L 360 30 L 360 200 L 60 200 Z" fill="url(#areaGradient)" class="chart-fill" />
-
-                    <!-- Main line chart -->
+                <!-- Data Integration Visualization -->
+                <svg viewBox="0 0 400 300" class="w-full h-auto" preserveAspectRatio="xMidYMid meet">
+                  <!-- Three data streams on the left -->
+                  
+                  <!-- Financial stream -->
+                  <line x1="20" y1="60" x2="120" y2="80" stroke="#1e73be" stroke-width="3" stroke-linecap="round" class="data-flow-stream" />
+                  <circle cx="15" cy="55" r="4" fill="#1e73be" opacity="0.8" />
+                  <text x="25" y="50" font-size="12" fill="#e2e8f0" font-weight="500">Financial</text>
+                  
+                  <!-- Operational stream -->
+                  <line x1="20" y1="150" x2="120" y2="150" stroke="#00a3a3" stroke-width="3" stroke-linecap="round" class="data-flow-stream" />
+                  <circle cx="15" cy="150" r="4" fill="#00a3a3" opacity="0.8" />
+                  <text x="25" y="145" font-size="12" fill="#e2e8f0" font-weight="500">Operational</text>
+                  
+                  <!-- Customer stream -->
+                  <line x1="20" y1="240" x2="120" y2="220" stroke="#06b6d4" stroke-width="3" stroke-linecap="round" class="data-flow-stream" />
+                  <circle cx="15" cy="245" r="4" fill="#06b6d4" opacity="0.8" />
+                  <text x="25" y="260" font-size="12" fill="#e2e8f0" font-weight="500">Customer</text>
+                  
+                  <!-- Convergence point -->
+                  <circle cx="135" cy="150" r="12" fill="none" stroke="#00a3a3" stroke-width="2" opacity="0.6" />
+                  <circle cx="135" cy="150" r="8" fill="#00a3a3" opacity="0.4" />
+                  
+                  <!-- Arrow to chart -->
+                  <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                      <polygon points="0 0, 10 3, 0 6" fill="#00a3a3" />
+                    </marker>
+                  </defs>
+                  <line x1="155" y1="150" x2="220" y2="150" stroke="#00a3a3" stroke-width="2.5" marker-end="url(#arrowhead)" class="arrow-flow" />
+                  
+                  <!-- Simple upward trend chart -->
+                  <g>
+                    <!-- Chart background -->
+                    <rect x="230" y="100" width="150" height="100" rx="8" fill="rgba(255, 255, 255, 0.05)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" />
+                    
+                    <!-- Trend line -->
                     <polyline
-                      points="60,170 120,140 180,110 240,80 300,50 360,30"
+                      points="245,160 270,145 295,130 320,110 345,85"
                       fill="none"
                       stroke="#00a3a3"
                       stroke-width="3"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                       class="chart-line"
-                      style="stroke-dasharray: 1000; stroke-dashoffset: 1000;"
+                      style="stroke-dasharray: 200; stroke-dashoffset: 200;"
                     />
-
+                    
                     <!-- Data points -->
-                    <circle cx="60" cy="170" r="5" fill="#1e73be" opacity="0.8" />
-                    <circle cx="120" cy="140" r="5" fill="#1e73be" opacity="0.8" />
-                    <circle cx="180" cy="110" r="5" fill="#1e73be" opacity="0.8" />
-                    <circle cx="240" cy="80" r="5" fill="#00a3a3" opacity="0.9" />
-                    <circle cx="300" cy="50" r="5" fill="#00a3a3" opacity="0.9" />
-                    <circle cx="360" cy="30" r="6" fill="#00a3a3" opacity="1" />
-
-                    <!-- Y-axis labels -->
-                    <text x="30" y="205" font-size="11" fill="#64748b" text-anchor="end">0</text>
-                    <text x="30" y="155" font-size="11" fill="#64748b" text-anchor="end">25</text>
-                    <text x="30" y="105" font-size="11" fill="#64748b" text-anchor="end">50</text>
-                    <text x="30" y="55" font-size="11" fill="#64748b" text-anchor="end">75</text>
-
-                    <!-- X-axis labels -->
-                    <text x="60" y="220" font-size="11" fill="#64748b" text-anchor="middle">Jan</text>
-                    <text x="120" y="220" font-size="11" fill="#64748b" text-anchor="middle">Feb</text>
-                    <text x="180" y="220" font-size="11" fill="#64748b" text-anchor="middle">Mar</text>
-                    <text x="240" y="220" font-size="11" fill="#64748b" text-anchor="middle">Apr</text>
-                    <text x="300" y="220" font-size="11" fill="#64748b" text-anchor="middle">May</text>
-                    <text x="360" y="220" font-size="11" fill="#64748b" text-anchor="middle">Jun</text>
-                  </svg>
-                </div>
-
-                <!-- Stats footer -->
-                <div class="mt-8 grid grid-cols-2 gap-6">
-                  <div class="border-t border-white/10 pt-4">
-                    <p class="text-xs text-white/60 uppercase tracking-wide">Monthly Growth</p>
-                    <p class="text-xl font-bold text-cyan-300 mt-1">+18.5%</p>
-                  </div>
-                  <div class="border-t border-white/10 pt-4">
-                    <p class="text-xs text-white/60 uppercase tracking-wide">Trend</p>
-                    <p class="text-xl font-bold text-cyan-300 mt-1">Positive</p>
-                  </div>
-                </div>
+                    <circle cx="245" cy="160" r="3" fill="#1e73be" opacity="0.7" />
+                    <circle cx="270" cy="145" r="3" fill="#1e73be" opacity="0.8" />
+                    <circle cx="295" cy="130" r="3" fill="#00a3a3" opacity="0.8" />
+                    <circle cx="320" cy="110" r="3" fill="#00a3a3" opacity="0.9" />
+                    <circle cx="345" cy="85" r="4" fill="#00a3a3" opacity="1" />
+                    
+                    <!-- Subtle fill under curve -->
+                    <defs>
+                      <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#00a3a3;stop-opacity:0.2" />
+                        <stop offset="100%" style="stop-color:#00a3a3;stop-opacity:0" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M 245 160 L 270 145 L 295 130 L 320 110 L 345 85 L 345 190 L 245 190 Z" fill="url(#chartGradient)" class="chart-fill" />
+                  </g>
+                </svg>
               </div>
             </div>
           </div>
