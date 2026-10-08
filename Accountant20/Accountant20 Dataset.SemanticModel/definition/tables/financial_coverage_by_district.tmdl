@@ -1,0 +1,121 @@
+table financial_coverage_by_district
+	lineageTag: 1be6cfe8-8cd5-48b5-afb0-374e06ad5884
+
+	column district
+		dataType: string
+		lineageTag: 83108945-f8aa-4405-867f-c14694688573
+		summarizeBy: none
+		sourceColumn: district
+
+		annotation SummarizationSetBy = Automatic
+
+	column accountant
+		dataType: string
+		lineageTag: 29746703-8599-49a9-8f35-7006780f91e1
+		summarizeBy: none
+		sourceColumn: accountant
+
+		annotation SummarizationSetBy = Automatic
+
+	column measure
+		dataType: string
+		lineageTag: 79e8d4a6-bb74-42e3-8468-c05de199cd5c
+		summarizeBy: none
+		sourceColumn: measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column measure_tier
+		dataType: string
+		lineageTag: 42373b5c-1cf6-4a3e-8191-897f0be0fd5c
+		summarizeBy: none
+		sourceColumn: measure_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column in_scope_companies_core
+		dataType: int64
+		formatString: 0
+		lineageTag: c4a0810b-fbe2-4c51-8c2b-21222ccff602
+		summarizeBy: sum
+		sourceColumn: in_scope_companies_core
+
+		annotation SummarizationSetBy = Automatic
+
+	column companies_with_any_usable_value
+		dataType: int64
+		formatString: 0
+		lineageTag: 5aeb6119-eaa9-4e98-bd30-cd0cc52d8fe4
+		summarizeBy: sum
+		sourceColumn: companies_with_any_usable_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column companies_with_recent_usable_value
+		dataType: int64
+		formatString: 0
+		lineageTag: f87a95b3-9c58-4360-a404-a2e947c853d7
+		summarizeBy: sum
+		sourceColumn: companies_with_recent_usable_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column companies_with_two_or_more_usable_periods
+		dataType: int64
+		formatString: 0
+		lineageTag: ca1be8ae-c33a-45a2-9dd7-9a05497edbb1
+		summarizeBy: sum
+		sourceColumn: companies_with_two_or_more_usable_periods
+
+		annotation SummarizationSetBy = Automatic
+
+	column any_usable_coverage_pct
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d829efe-1b18-4123-b3df-dd7cecf70b88
+		summarizeBy: sum
+		sourceColumn: any_usable_coverage_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column recent_usable_coverage_pct
+		dataType: int64
+		formatString: 0
+		lineageTag: 38862f33-0f01-4e41-9c4e-16d9885bf548
+		summarizeBy: sum
+		sourceColumn: recent_usable_coverage_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column two_plus_period_coverage_pct
+		dataType: int64
+		formatString: 0
+		lineageTag: 7fb612eb-829e-44f2-8205-e937b85b7aca
+		summarizeBy: sum
+		sourceColumn: two_plus_period_coverage_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column comparison_recency_months
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bf8ecb1-96fb-4e85-af5d-e72a7aaa8bad
+		summarizeBy: sum
+		sourceColumn: comparison_recency_months
+
+		annotation SummarizationSetBy = Automatic
+
+	partition financial_coverage_by_district = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\CravenData\new_data_validation\ch_full_runs\accountant20\exports\financial_coverage_by_district.csv"),[Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"district", type text}, {"accountant", type text}, {"measure", type text}, {"measure_tier", type text}, {"in_scope_companies_core", Int64.Type}, {"companies_with_any_usable_value", Int64.Type}, {"companies_with_recent_usable_value", Int64.Type}, {"companies_with_two_or_more_usable_periods", Int64.Type}, {"any_usable_coverage_pct", Int64.Type}, {"recent_usable_coverage_pct", Int64.Type}, {"two_plus_period_coverage_pct", Int64.Type}, {"comparison_recency_months", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

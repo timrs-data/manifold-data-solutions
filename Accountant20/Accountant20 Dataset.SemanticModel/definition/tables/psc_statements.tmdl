@@ -1,0 +1,96 @@
+table psc_statements
+	lineageTag: b33a1baa-ce63-42a7-a69f-63dbbec0abe3
+
+	column company_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 021e51ad-0884-407f-aa4c-2adcdd6af44e
+		summarizeBy: none
+		sourceColumn: company_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column district
+		dataType: string
+		lineageTag: 118867f0-16c3-48f3-bc88-a2c62580ce7e
+		summarizeBy: none
+		sourceColumn: district
+
+		annotation SummarizationSetBy = Automatic
+
+	column accountant
+		dataType: string
+		lineageTag: f5227e71-b210-4105-a4ef-a9f694d3d924
+		summarizeBy: none
+		sourceColumn: accountant
+
+		annotation SummarizationSetBy = Automatic
+
+	column ceased_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2d8e52aa-9a49-4698-8412-ad092d5d8f77
+		summarizeBy: none
+		sourceColumn: ceased_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column current_statement_record
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b835783e-6794-4c0f-9d41-7b15620e98de
+		summarizeBy: none
+		sourceColumn: current_statement_record
+
+		annotation SummarizationSetBy = Automatic
+
+	column notified_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 837f4e5b-36af-4a98-aeeb-616903cc7485
+		summarizeBy: none
+		sourceColumn: notified_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column retrieved_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6dfa8e60-b9ac-472c-a264-35590c55d67b
+		summarizeBy: none
+		sourceColumn: retrieved_at_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_record_link
+		dataType: string
+		lineageTag: 05910ca6-e089-4c90-a890-a02bf20843ec
+		summarizeBy: none
+		sourceColumn: source_record_link
+
+		annotation SummarizationSetBy = Automatic
+
+	column statement
+		dataType: string
+		lineageTag: 468a719a-7c46-44e3-8b96-09fb7ce9d218
+		summarizeBy: none
+		sourceColumn: statement
+
+		annotation SummarizationSetBy = Automatic
+
+	partition psc_statements = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\CravenData\new_data_validation\ch_full_runs\accountant20\exports\psc_statements.csv"),[Delimiter=",", Columns=9, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"company_number", Int64.Type}, {"district", type text}, {"accountant", type text}, {"ceased_on", type date}, {"current_statement_record", type logical}, {"notified_on", type date}, {"retrieved_at_utc", type datetime}, {"source_record_link", type text}, {"statement", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

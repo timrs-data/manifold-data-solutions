@@ -1,0 +1,28 @@
+model Model
+	culture: en-GB
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["address_clusters","companies","district_summary","filings","financial_coverage_by_district","psc_statements","roles","financial_document_inventory","financial_history"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table address_clusters
+ref table companies
+ref table district_summary
+ref table filings
+ref table financial_coverage_by_district
+ref table psc_statements
+ref table roles
+ref table financial_document_inventory
+ref table financial_history
+ref table DimFinancialMeasure
+
+ref cultureInfo en-GB
+

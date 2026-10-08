@@ -1,0 +1,152 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 251.40414861748476,
+        "y": 242.78457232756691
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 380.6977107636198,
+            "y": 310.38286821096642
+          },
+          "nodeIndex": "address_clusters",
+          "nodeLineageTag": "128d33ef-7eec-4706-b91b-63ea844ac0d7",
+          "size": {
+            "height": 282.60422026003073,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1265.9199994573755,
+            "y": 255.4111299210565
+          },
+          "nodeIndex": "companies",
+          "nodeLineageTag": "c4c5c0a1-4aa5-493e-8f90-6b2b5b1bb930",
+          "size": {
+            "height": 520.87650199964742,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 932.89589762602293,
+            "y": 0
+          },
+          "nodeIndex": "district_summary",
+          "nodeLineageTag": "8541d60c-1381-48df-9318-8269ed23c357",
+          "size": {
+            "height": 432.12896493977962,
+            "width": 284.19340843880855
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 598.76560949228656,
+            "y": 625.26859735561607
+          },
+          "nodeIndex": "filings",
+          "nodeLineageTag": "fb82cf01-4b0b-4e8e-9949-a794d9dec7cd",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1253.2682764072235,
+            "y": 0
+          },
+          "nodeIndex": "financial_coverage_by_district",
+          "nodeLineageTag": "1be6cfe8-8cd5-48b5-afb0-374e06ad5884",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 228.88923258429509,
+            "y": 622.27210263325173
+          },
+          "nodeIndex": "financial_document_inventory",
+          "nodeLineageTag": "c40c5257-770e-4dcb-bc91-c913fc72a1ac",
+          "size": {
+            "height": 587.22535738145723,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1668.080197642651,
+            "y": 398.91080517653029
+          },
+          "nodeIndex": "financial_history",
+          "nodeLineageTag": "7d0beb4c-d3ec-40cb-8c6a-2eb1f7bd6ce1",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 983.57363189950183,
+            "y": 904.91494202977049
+          },
+          "nodeIndex": "psc_statements",
+          "nodeLineageTag": "b33a1baa-ce63-42a7-a69f-63dbbec0abe3",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1766.8856051750065,
+            "y": 762.963126015156
+          },
+          "nodeIndex": "roles",
+          "nodeLineageTag": "f4a091c7-bd4a-4ac7-931d-22685c42f869",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1960.2686543303282,
+            "y": 175.55738545505363
+          },
+          "nodeIndex": "DimFinancialMeasure",
+          "nodeLineageTag": "33a0ab41-1f02-4c48-a5a1-a41e6f8d71b2",
+          "size": {
+            "height": 321.45525741440184,
+            "width": 234
+          },
+          "zIndex": 10
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 55.687227426390692,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

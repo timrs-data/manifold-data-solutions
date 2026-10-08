@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "745675cb00d550734008",
+  "position": {
+    "x": 1280,
+    "y": 144.08164595294875,
+    "z": 7,
+    "height": 80,
+    "width": 240,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "roles"
+                    }
+                  },
+                  "Property": "manual_review_candidate"
+                }
+              },
+              "queryRef": "roles.manual_review_candidate",
+              "nativeQueryRef": "manual_review_candidate",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "e583c15bb9cdd46e5f79",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "roles"
+              }
+            },
+            "Property": "manual_review_candidate"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

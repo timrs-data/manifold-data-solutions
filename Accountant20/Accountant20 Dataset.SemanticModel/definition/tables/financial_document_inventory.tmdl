@@ -1,0 +1,311 @@
+table financial_document_inventory
+	lineageTag: c40c5257-770e-4dcb-bc91-c913fc72a1ac
+
+	column company_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d891d3c-b18e-4a12-aaf3-3bc040322787
+		summarizeBy: sum
+		sourceColumn: company_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column district
+		dataType: string
+		lineageTag: d25ec6fa-ec27-4827-a511-e19caa998327
+		summarizeBy: none
+		sourceColumn: district
+
+		annotation SummarizationSetBy = Automatic
+
+	column accountant
+		dataType: string
+		lineageTag: cb0e2c73-ca74-4d5f-af58-78d7415a0fad
+		summarizeBy: none
+		sourceColumn: accountant
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_key
+		dataType: string
+		lineageTag: 22855855-5c60-4a51-8cc2-354cac3695b8
+		summarizeBy: none
+		sourceColumn: filing_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column accounts_period_age_months_at_as_of
+		dataType: int64
+		formatString: 0
+		lineageTag: 583cad5b-68ee-4878-b2a2-089299e14d54
+		summarizeBy: sum
+		sourceColumn: accounts_period_age_months_at_as_of
+
+		annotation SummarizationSetBy = Automatic
+
+	column accounts_period_end_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 63a44eb0-f96b-4278-9f36-7e9860cd4dce
+		summarizeBy: none
+		sourceColumn: accounts_period_end_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column available_content_types
+		dataType: string
+		lineageTag: fd06e948-192f-48cd-9039-e2b1e094e6a8
+		summarizeBy: none
+		sourceColumn: available_content_types
+
+		annotation SummarizationSetBy = Automatic
+
+	column contexts_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: f8c77873-95c5-45cc-9505-796d111fd844
+		summarizeBy: sum
+		sourceColumn: contexts_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column curated_rows_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: c0b3d192-fa0a-436e-bbd8-84e6273abca7
+		summarizeBy: sum
+		sourceColumn: curated_rows_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column document_id
+		dataType: string
+		lineageTag: d1dae9ca-c078-46e4-a259-172aae3efaf8
+		summarizeBy: none
+		sourceColumn: document_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column document_metadata_url
+		dataType: string
+		lineageTag: d4f6c927-887f-4d90-b44e-ab26dd2017a3
+		summarizeBy: none
+		sourceColumn: document_metadata_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column download_status
+		dataType: string
+		lineageTag: 1db8cf70-386b-44c1-b405-ec394523cdd9
+		summarizeBy: none
+		sourceColumn: download_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column downloaded_bytes
+		dataType: int64
+		formatString: 0
+		lineageTag: 819d44a3-d4e6-4ed7-8ece-535f15ef8838
+		summarizeBy: sum
+		sourceColumn: downloaded_bytes
+
+		annotation SummarizationSetBy = Automatic
+
+	column electronic_mime_type_selected
+		dataType: string
+		lineageTag: f336178b-7c1c-470d-b070-d684e322f2fb
+		summarizeBy: none
+		sourceColumn: electronic_mime_type_selected
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_description_code
+		dataType: string
+		lineageTag: 1c9637f5-facc-4de1-a7d9-b2b4b23f9de2
+		summarizeBy: none
+		sourceColumn: filing_description_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_processed_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2c830276-3dbb-4df4-a216-a2add049c1c9
+		summarizeBy: none
+		sourceColumn: filing_processed_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column financial_period_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 0684f5be-9a11-43f5-a7ce-914b77c1def8
+		summarizeBy: sum
+		sourceColumn: financial_period_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column freshness_band
+		dataType: string
+		lineageTag: d78662c9-2757-4a4e-98b0-c0dc621d5802
+		summarizeBy: none
+		sourceColumn: freshness_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column local_filename
+		dataType: string
+		lineageTag: 8a0b37e6-653f-4edd-bea8-98c213326ba5
+		summarizeBy: none
+		sourceColumn: local_filename
+
+		annotation SummarizationSetBy = Automatic
+
+	column metadata_created_at
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d5a33ad6-98d2-4087-9b31-cb7febbeb3bb
+		summarizeBy: none
+		sourceColumn: metadata_created_at
+
+		annotation SummarizationSetBy = Automatic
+
+	column metadata_significant_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7bf3ff2f-fe7b-4d13-900a-f5c99233f586
+		summarizeBy: none
+		sourceColumn: metadata_significant_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column metadata_significant_date_type
+		dataType: string
+		lineageTag: eff49796-e857-40a2-88b2-b0e805f7d6d4
+		summarizeBy: none
+		sourceColumn: metadata_significant_date_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column numeric_facts_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d0d7ce6-f181-48b6-bfce-36d730dc5d68
+		summarizeBy: sum
+		sourceColumn: numeric_facts_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column pages
+		dataType: int64
+		formatString: 0
+		lineageTag: cf337101-1231-4a4c-88da-c99128f8a0c9
+		summarizeBy: sum
+		sourceColumn: pages
+
+		annotation SummarizationSetBy = Automatic
+
+	column parse_status
+		dataType: string
+		lineageTag: fa8a87ea-47a3-4b62-93cd-971c41464a23
+		summarizeBy: none
+		sourceColumn: parse_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column parsed_numeric_facts
+		dataType: int64
+		formatString: 0
+		lineageTag: 5271cbbb-0ee0-459e-88f8-65d8d95c23fa
+		summarizeBy: sum
+		sourceColumn: parsed_numeric_facts
+
+		annotation SummarizationSetBy = Automatic
+
+	column recent_primary_comparison_rows_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: f858b1d7-dcb0-450f-81d3-bdf85d4a55bb
+		summarizeBy: sum
+		sourceColumn: recent_primary_comparison_rows_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column retained_financial_rows_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: b51506d1-3e5a-4f6a-bfbe-8189a332a56e
+		summarizeBy: sum
+		sourceColumn: retained_financial_rows_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column retryable_failure
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: abea1a9b-cf83-4bb4-bb33-e637353e961d
+		summarizeBy: none
+		sourceColumn: retryable_failure
+
+		annotation SummarizationSetBy = Automatic
+
+	column sha256
+		dataType: string
+		lineageTag: 2389510b-0fd8-4196-8591-198ea0cf81d5
+		summarizeBy: none
+		sourceColumn: sha256
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 94e7557d-af91-4f58-b4fa-a2af9e0fd0e7
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_id
+		dataType: string
+		lineageTag: 71137704-1446-49c8-84b1-93df56268934
+		summarizeBy: none
+		sourceColumn: transaction_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column units_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: b5f874a0-b939-4adb-be0b-dbb386d3f08d
+		summarizeBy: sum
+		sourceColumn: units_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column usable_rows_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 60b72a42-b7fc-4ea6-b28c-4de517e1c651
+		summarizeBy: sum
+		sourceColumn: usable_rows_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition financial_document_inventory = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\CravenData\new_data_validation\ch_full_runs\accountant20\exports\financial_document_inventory.csv"),[Delimiter=",", Columns=34, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"company_number", Int64.Type}, {"district", type text}, {"accountant", type text}, {"filing_key", type text}, {"accounts_period_age_months_at_as_of", Int64.Type}, {"accounts_period_end_on", type date}, {"available_content_types", type text}, {"contexts_observed", Int64.Type}, {"curated_rows_observed", Int64.Type}, {"document_id", type text}, {"document_metadata_url", type text}, {"download_status", type text}, {"downloaded_bytes", Int64.Type}, {"electronic_mime_type_selected", type text}, {"filing_description_code", type text}, {"filing_processed_on", type date}, {"financial_period_rank", Int64.Type}, {"freshness_band", type text}, {"local_filename", type text}, {"metadata_created_at", type datetime}, {"metadata_significant_date", type datetime}, {"metadata_significant_date_type", type text}, {"numeric_facts_observed", Int64.Type}, {"pages", Int64.Type}, {"parse_status", type text}, {"parsed_numeric_facts", Int64.Type}, {"recent_primary_comparison_rows_observed", Int64.Type}, {"retained_financial_rows_observed", Int64.Type}, {"retryable_failure", type logical}, {"sha256", type text}, {"status", type text}, {"transaction_id", type text}, {"units_observed", Int64.Type}, {"usable_rows_observed", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

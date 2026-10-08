@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Accountant20 Dataset"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ccdb860a-e08a-42d0-bd62-33feb9115cae"
+  }
+}

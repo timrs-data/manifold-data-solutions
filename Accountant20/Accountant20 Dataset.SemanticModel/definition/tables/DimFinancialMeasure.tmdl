@@ -1,0 +1,45 @@
+table DimFinancialMeasure
+	lineageTag: 33a0ab41-1f02-4c48-a5a1-a41e6f8d71b2
+
+	column measure
+		dataType: string
+		lineageTag: 22239b38-00df-4cff-8aee-1c880435e79c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [measure]
+
+		annotation SummarizationSetBy = Automatic
+
+	column display_name
+		dataType: string
+		lineageTag: 8670a7aa-105d-4fb0-a842-079e3cf093ec
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [display_name]
+		sortByColumn: sort_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column measure_group
+		dataType: string
+		lineageTag: ffa99a56-13b8-4f37-bdbc-148612a4af76
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [measure_group]
+
+		annotation SummarizationSetBy = Automatic
+
+	column sort_order
+		dataType: int64
+		formatString: 0
+		lineageTag: a8dde646-167b-4679-a40e-e17cf72f01d9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [sort_order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFinancialMeasure = calculated
+		mode: import
+		source = DATATABLE("measure", STRING, "display_name", STRING, "measure_group", STRING, "sort_order", INTEGER, {{"net_assets_liabilities", "Net Assets", "Primary", 1}, {"net_current_assets_liabilities", "Net Current Assets", "Primary", 2}, {"current_assets", "Current Assets", "Primary", 3}, {"total_assets_less_current_liabilities", "Total Assets Less Current Liabilities", "Primary", 4}, {"cash", "Cash", "Secondary", 5}, {"average_employees", "Employees", "Secondary", 6}, {"fixed_assets", "Fixed Assets", "Secondary", 7}})
+

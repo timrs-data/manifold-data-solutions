@@ -1,0 +1,304 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "195b19c8d76009aac154",
+  "position": {
+    "x": 960,
+    "y": 224,
+    "z": 5,
+    "height": 304,
+    "width": 944,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "roles"
+                    }
+                  },
+                  "Property": "name"
+                }
+              },
+              "queryRef": "roles.name",
+              "nativeQueryRef": "name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "roles"
+                    }
+                  },
+                  "Property": "role_family"
+                }
+              },
+              "queryRef": "roles.role_family",
+              "nativeQueryRef": "role_family"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "roles"
+                    }
+                  },
+                  "Property": "notified_on"
+                }
+              },
+              "queryRef": "roles.notified_on",
+              "nativeQueryRef": "notified_on"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "roles"
+                    }
+                  },
+                  "Property": "appointment_verification_statement_due_on"
+                }
+              },
+              "queryRef": "roles.appointment_verification_statement_due_on",
+              "nativeQueryRef": "appointment_verification_statement_due_on"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "roles"
+                    }
+                  },
+                  "Property": "appointment_verification_end_on"
+                }
+              },
+              "queryRef": "roles.appointment_verification_end_on",
+              "nativeQueryRef": "appointment_verification_end_on"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "roles"
+                    }
+                  },
+                  "Property": "manual_review_candidate"
+                }
+              },
+              "queryRef": "roles.manual_review_candidate",
+              "nativeQueryRef": "manual_review_candidate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "roles"
+                  }
+                },
+                "Property": "appointment_verification_end_on"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "74.33333223325099D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "roles.notified_on"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "169.00000617873468D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "roles.appointment_verification_statement_due_on"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "103.94974817302774D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "roles.name"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Officer / PSC Detail'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "463792100187b903928e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "roles"
+              }
+            },
+            "Property": "name"
+          }
+        },
+        "type": "Categorical",
+        "objects": {
+          "general": [
+            {
+              "properties": {}
+            }
+          ]
+        }
+      },
+      {
+        "name": "6dd27ca90e0b2883476a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "roles"
+              }
+            },
+            "Property": "notified_on"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "38fefc176b7a1c140dd0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "roles"
+              }
+            },
+            "Property": "role_family"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0fdc47a5a6ec944ef29b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "roles"
+              }
+            },
+            "Property": "appointment_verification_statement_due_on"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f0ddebe7a546ec46e27b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "roles"
+              }
+            },
+            "Property": "appointment_verification_end_on"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "661abe6dae515a74bfea",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "roles"
+              }
+            },
+            "Property": "manual_review_candidate"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

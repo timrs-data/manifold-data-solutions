@@ -1,0 +1,361 @@
+table financial_history
+	lineageTag: 7d0beb4c-d3ec-40cb-8c6a-2eb1f7bd6ce1
+
+	column company_number
+		dataType: int64
+		formatString: 0
+		lineageTag: eb849540-f30b-42c8-bbe7-b85f2e520223
+		summarizeBy: none
+		sourceColumn: company_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column district
+		dataType: string
+		lineageTag: dd82fe30-e761-48ee-ae12-cf2058ac7ce5
+		summarizeBy: none
+		sourceColumn: district
+
+		annotation SummarizationSetBy = Automatic
+
+	column accountant
+		dataType: string
+		lineageTag: 28c5e01a-3919-4cb1-af67-62d72af354ee
+		summarizeBy: none
+		sourceColumn: accountant
+
+		annotation SummarizationSetBy = Automatic
+
+	column accounts_period_end_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9d90870e-0e81-4cab-b414-61b7b5a1d971
+		summarizeBy: none
+		sourceColumn: accounts_period_end_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column measure
+		dataType: string
+		lineageTag: 2754a044-b457-4bdf-b141-2a82fb5011a4
+		summarizeBy: none
+		sourceColumn: measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column scope
+		dataType: string
+		lineageTag: 8a92a5e9-a998-4c35-b399-6cb162c64787
+		summarizeBy: none
+		sourceColumn: scope
+
+		annotation SummarizationSetBy = Automatic
+
+	column xbrl_value
+		dataType: double
+		lineageTag: be21ad59-284d-4ae1-b43c-0a03b98a81f9
+		summarizeBy: sum
+		sourceColumn: xbrl_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column accounts_period_age_months_at_as_of
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b203a36-9b3f-4435-af49-398b1df28ea7
+		summarizeBy: sum
+		sourceColumn: accounts_period_age_months_at_as_of
+
+		annotation SummarizationSetBy = Automatic
+
+	column candidate_fact_count_all_periods
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a75b0a5-35d7-4a04-aea7-2bbee920c283
+		summarizeBy: sum
+		sourceColumn: candidate_fact_count_all_periods
+
+		annotation SummarizationSetBy = Automatic
+
+	column candidate_fact_count_selected_period
+		dataType: int64
+		formatString: 0
+		lineageTag: d4f1c8f0-deea-419e-841e-d80f35e1dfca
+		summarizeBy: sum
+		sourceColumn: candidate_fact_count_selected_period
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: 1afadef8-e771-4764-a3f5-2db5bea98537
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column concept_name
+		dataType: string
+		lineageTag: c8577263-b275-46cc-9dd0-66d4fa1a2a95
+		summarizeBy: none
+		sourceColumn: concept_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column context_ref
+		dataType: string
+		lineageTag: 0d6658fb-f22a-46dc-80c2-99c0684e470d
+		summarizeBy: none
+		sourceColumn: context_ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column decimals
+		dataType: string
+		lineageTag: e36c8ad8-b805-48b2-859b-36592fcda58e
+		summarizeBy: none
+		sourceColumn: decimals
+
+		annotation SummarizationSetBy = Automatic
+
+	column dimensions
+		dataType: string
+		lineageTag: ee6e601a-c329-47da-9e90-6240cebe26a6
+		summarizeBy: none
+		sourceColumn: dimensions
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_nonzero_scale_review_required
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9e9dbd3b-8095-4183-85a2-566f4be26f01
+		summarizeBy: none
+		sourceColumn: employee_nonzero_scale_review_required
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_description_code
+		dataType: string
+		lineageTag: c34545c7-6bd2-49db-bedc-7e737cc30d05
+		summarizeBy: none
+		sourceColumn: filing_description_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_key
+		dataType: string
+		lineageTag: a81d417d-e030-46cc-a76f-840fdb932a71
+		summarizeBy: none
+		sourceColumn: filing_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_processed_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bbc15fda-8ad4-430e-9f7b-765e826b1f0f
+		summarizeBy: none
+		sourceColumn: filing_processed_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column financial_period_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 776d521a-3cd7-4dd9-9af3-d99f7897ae50
+		summarizeBy: sum
+		sourceColumn: financial_period_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column freshness_band
+		dataType: string
+		lineageTag: ff7ae2d4-a098-4fe2-b69a-5f5d5391f5e1
+		summarizeBy: none
+		sourceColumn: freshness_band
+
+		annotation SummarizationSetBy = Automatic
+
+	column instant
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 85399249-54d8-46bb-a57e-a0bae4ab77c6
+		summarizeBy: none
+		sourceColumn: instant
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column latest_filing_for_company_period_scope_measure
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 310ccd59-b678-4058-a4ef-e6c828fb525c
+		summarizeBy: none
+		sourceColumn: latest_filing_for_company_period_scope_measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column latest_period_for_company_scope_measure
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9805334c-fbe5-464f-b901-62a6fb481b15
+		summarizeBy: none
+		sourceColumn: latest_period_for_company_scope_measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column measure_tier
+		dataType: string
+		lineageTag: 2471fda3-d31c-4fec-957d-e12503caa87f
+		summarizeBy: none
+		sourceColumn: measure_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_end
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ae3851ea-bce6-4159-a3e8-5aab496f6840
+		summarizeBy: none
+		sourceColumn: period_end
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column period_match_quality
+		dataType: string
+		lineageTag: 04f35e1f-09b7-48bf-b1ac-8db6eea9b639
+		summarizeBy: none
+		sourceColumn: period_match_quality
+
+		annotation SummarizationSetBy = Automatic
+
+	column period_start
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9029c509-8868-49e6-8ed6-bf1d2845c9fe
+		summarizeBy: none
+		sourceColumn: period_start
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column primary_comparison_candidate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b6d69e3f-fa5c-455c-ba1e-26d1c2ea59ff
+		summarizeBy: none
+		sourceColumn: primary_comparison_candidate
+
+		annotation SummarizationSetBy = Automatic
+
+	column quality_gate
+		dataType: string
+		lineageTag: 055eb782-5b8a-44b9-92b8-21e9b055a9a7
+		summarizeBy: none
+		sourceColumn: quality_gate
+
+		annotation SummarizationSetBy = Automatic
+
+	column recent_for_postcode_comparison
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 04ab5e1b-c4a5-49ea-90c2-6991162f3d5c
+		summarizeBy: none
+		sourceColumn: recent_for_postcode_comparison
+
+		annotation SummarizationSetBy = Automatic
+
+	column scale
+		dataType: int64
+		formatString: 0
+		lineageTag: d4bc03b1-73eb-46c3-bd7a-b3e4ef89724f
+		summarizeBy: sum
+		sourceColumn: scale
+
+		annotation SummarizationSetBy = Automatic
+
+	column scope_quality
+		dataType: string
+		lineageTag: 7f524b25-d983-478b-a8b1-7af89e7705be
+		summarizeBy: none
+		sourceColumn: scope_quality
+
+		annotation SummarizationSetBy = Automatic
+
+	column selection_quality
+		dataType: string
+		lineageTag: 9c39e246-9ec4-4ddc-a5eb-0e63a2c8cfb6
+		summarizeBy: none
+		sourceColumn: selection_quality
+
+		annotation SummarizationSetBy = Automatic
+
+	column unique_candidate_signatures
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a24924d-de92-43b7-b825-57aae40fbf64
+		summarizeBy: sum
+		sourceColumn: unique_candidate_signatures
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_text
+		dataType: string
+		lineageTag: 9ca8307c-b7a4-43d4-8bb1-5dee111ffa70
+		summarizeBy: none
+		sourceColumn: unit_text
+
+		annotation SummarizationSetBy = Automatic
+
+	column usable_for_dashboard_candidate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f2d2e853-6dae-4d07-8b89-697e1ea4d5e8
+		summarizeBy: none
+		sourceColumn: usable_for_dashboard_candidate
+
+		annotation SummarizationSetBy = Automatic
+
+	column usable_value
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4a040cc8-a6e4-4d82-9df2-6d9bffd52aa8
+		summarizeBy: none
+		sourceColumn: usable_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column visible_value_before_scale
+		dataType: int64
+		formatString: 0
+		lineageTag: f7c43d10-52b7-4d09-b897-331b1bec8171
+		summarizeBy: sum
+		sourceColumn: visible_value_before_scale
+
+		annotation SummarizationSetBy = Automatic
+
+	partition financial_history = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\CravenData\new_data_validation\ch_full_runs\accountant20\exports\financial_history.csv"),[Delimiter=",", Columns=39, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"company_number", Int64.Type}, {"district", type text}, {"accountant", type text}, {"accounts_period_end_on", type date}, {"measure", type text}, {"scope", type text}, {"xbrl_value", type number}, {"accounts_period_age_months_at_as_of", Int64.Type}, {"candidate_fact_count_all_periods", Int64.Type}, {"candidate_fact_count_selected_period", Int64.Type}, {"company_name", type text}, {"concept_name", type text}, {"context_ref", type text}, {"decimals", type text}, {"dimensions", type text}, {"employee_nonzero_scale_review_required", type logical}, {"filing_description_code", type text}, {"filing_key", type text}, {"filing_processed_on", type date}, {"financial_period_rank", Int64.Type}, {"freshness_band", type text}, {"instant", type date}, {"latest_filing_for_company_period_scope_measure", type logical}, {"latest_period_for_company_scope_measure", type logical}, {"measure_tier", type text}, {"period_end", type date}, {"period_match_quality", type text}, {"period_start", type date}, {"primary_comparison_candidate", type logical}, {"quality_gate", type text}, {"recent_for_postcode_comparison", type logical}, {"scale", Int64.Type}, {"scope_quality", type text}, {"selection_quality", type text}, {"unique_candidate_signatures", Int64.Type}, {"unit_text", type text}, {"usable_for_dashboard_candidate", type logical}, {"usable_value", type logical}, {"visible_value_before_scale", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

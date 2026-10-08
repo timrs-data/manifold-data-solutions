@@ -1,0 +1,252 @@
+table filings
+	lineageTag: fb82cf01-4b0b-4e8e-9949-a794d9dec7cd
+
+	column company_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 65bce71f-df88-4a51-94ab-a047097953d5
+		summarizeBy: none
+		sourceColumn: company_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column district
+		dataType: string
+		lineageTag: c6f8b2ea-13ee-4bdc-95cd-3ebd6638ee9c
+		summarizeBy: none
+		sourceColumn: district
+
+		annotation SummarizationSetBy = Automatic
+
+	column accountant
+		dataType: string
+		lineageTag: 6bdbd276-6f76-497a-9519-7a8f678b3ad3
+		summarizeBy: none
+		sourceColumn: accountant
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_key
+		dataType: string
+		lineageTag: bfe01d19-aeb4-4fcd-b07a-f217fc91f080
+		summarizeBy: none
+		sourceColumn: filing_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column accounts_period_end_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4b47f38b-a0c8-4298-b96f-7c6bd0648c7b
+		summarizeBy: none
+		sourceColumn: accounts_period_end_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column annotations
+		dataType: string
+		lineageTag: 40aca81a-13b5-4318-8350-8373103d8a6c
+		summarizeBy: none
+		sourceColumn: annotations
+
+		annotation SummarizationSetBy = Automatic
+
+	column associated_filings
+		dataType: string
+		lineageTag: 18cfc1fd-9427-4a92-bb8c-e6415cc181a7
+		summarizeBy: none
+		sourceColumn: associated_filings
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 8a0add71-81f0-42ab-92ec-ea3ec25b61e7
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 8c89ca10-8ce8-4356-a4b4-0327762ab293
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column description_code
+		dataType: string
+		lineageTag: 4168a63e-ea3d-4ff3-a0c6-d0db656b139e
+		summarizeBy: none
+		sourceColumn: description_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column description_mapping_quality
+		dataType: string
+		lineageTag: 763ae3e1-8707-4442-80da-be672f251b48
+		summarizeBy: none
+		sourceColumn: description_mapping_quality
+
+		annotation SummarizationSetBy = Automatic
+
+	column description_values
+		dataType: string
+		lineageTag: 02335e24-7d04-49e4-a560-281e81ae31c4
+		summarizeBy: none
+		sourceColumn: description_values
+
+		annotation SummarizationSetBy = Automatic
+
+	column document_metadata_url
+		dataType: string
+		lineageTag: ff78bd68-97d8-4005-9893-ea7d12c97707
+		summarizeBy: none
+		sourceColumn: document_metadata_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_family
+		dataType: string
+		lineageTag: dd459dea-c74c-4a49-94a1-cc7b07f48d3c
+		summarizeBy: none
+		sourceColumn: filing_family
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_type
+		dataType: string
+		lineageTag: 74276d93-94d4-4cbc-92a8-019d748a73d1
+		summarizeBy: none
+		sourceColumn: filing_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column historical_lateness_status
+		dataType: string
+		lineageTag: 030d2b63-a52a-47ed-9273-c07777c73ebb
+		summarizeBy: none
+		sourceColumn: historical_lateness_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_strike_off_related
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 48b52a48-0730-4e39-b989-945cdea86289
+		summarizeBy: none
+		sourceColumn: is_strike_off_related
+
+		annotation SummarizationSetBy = Automatic
+
+	column paper_filed
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 85a65194-eccb-4c84-98b9-9bc37f78f2fb
+		summarizeBy: none
+		sourceColumn: paper_filed
+
+		annotation SummarizationSetBy = Automatic
+
+	column processed_lag_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 689fe65d-86e4-4ad3-839c-be01035e2601
+		summarizeBy: sum
+		sourceColumn: processed_lag_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column processed_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1bfb3de1-c958-45be-b2e3-2a9e11b92c25
+		summarizeBy: none
+		sourceColumn: processed_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column public_register_url
+		dataType: string
+		lineageTag: ce56dd69-7ed6-4678-8e8d-9ce01befdcbe
+		summarizeBy: none
+		sourceColumn: public_register_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column resolutions
+		dataType: string
+		lineageTag: 52b4981f-d4e4-4ba1-93b8-ffcb3370276c
+		summarizeBy: none
+		sourceColumn: resolutions
+
+		annotation SummarizationSetBy = Automatic
+
+	column retrieved_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1680359e-04fd-45ea-99f0-e673497cc5cc
+		summarizeBy: none
+		sourceColumn: retrieved_at_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column selected_for_export
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 733ea8f0-c2c7-496e-8021-ac7ba73647d1
+		summarizeBy: none
+		sourceColumn: selected_for_export
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_page_url
+		dataType: string
+		lineageTag: 260da946-7b28-4f34-a43c-46984bce3084
+		summarizeBy: none
+		sourceColumn: source_page_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_record_link
+		dataType: string
+		lineageTag: b532d217-ffea-4e01-abcb-5ca7554efa02
+		summarizeBy: none
+		sourceColumn: source_record_link
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_id
+		dataType: string
+		lineageTag: 67a92e18-47f5-4d24-8480-10b73c15aefd
+		summarizeBy: none
+		sourceColumn: transaction_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column within_five_year_window
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5dfd81c2-2139-4ad4-8c6b-852d9e7913d4
+		summarizeBy: none
+		sourceColumn: within_five_year_window
+
+		annotation SummarizationSetBy = Automatic
+
+	partition filings = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\CravenData\new_data_validation\ch_full_runs\accountant20\exports\filings.csv"),[Delimiter=",", Columns=28, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"company_number", Int64.Type}, {"district", type text}, {"accountant", type text}, {"filing_key", type text}, {"accounts_period_end_on", type date}, {"annotations", type text}, {"associated_filings", type text}, {"category", type text}, {"description", type text}, {"description_code", type text}, {"description_mapping_quality", type text}, {"description_values", type text}, {"document_metadata_url", type text}, {"filing_family", type text}, {"filing_type", type text}, {"historical_lateness_status", type text}, {"is_strike_off_related", type logical}, {"paper_filed", type logical}, {"processed_lag_days", Int64.Type}, {"processed_on", type date}, {"public_register_url", type text}, {"resolutions", type text}, {"retrieved_at_utc", type datetime}, {"selected_for_export", type logical}, {"source_page_url", type text}, {"source_record_link", type text}, {"transaction_id", type text}, {"within_five_year_window", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

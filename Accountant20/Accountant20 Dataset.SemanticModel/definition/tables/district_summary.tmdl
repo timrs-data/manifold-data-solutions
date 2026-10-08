@@ -1,0 +1,110 @@
+table district_summary
+	lineageTag: 8541d60c-1381-48df-9318-8269ed23c357
+
+	column district
+		dataType: string
+		lineageTag: 1590c453-202b-4741-88e8-5f289b32bb12
+		summarizeBy: none
+		sourceColumn: district
+
+		annotation SummarizationSetBy = Automatic
+
+	column accountant
+		dataType: string
+		lineageTag: 2ffedd3f-86fd-4ad5-999b-ef7ff0debcf5
+		summarizeBy: none
+		sourceColumn: accountant
+
+		annotation SummarizationSetBy = Automatic
+
+	column reported_hits_observed
+		dataType: string
+		lineageTag: 7fde1231-5775-4b70-bae4-2ac05c976617
+		summarizeBy: none
+		sourceColumn: reported_hits_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column latest_reported_hits
+		dataType: int64
+		formatString: 0
+		lineageTag: dd3f8aa4-e940-462e-84bd-29a2ff2adca2
+		summarizeBy: sum
+		sourceColumn: latest_reported_hits
+
+		annotation SummarizationSetBy = Automatic
+
+	column unique_search_records_seen
+		dataType: int64
+		formatString: 0
+		lineageTag: cdd65826-d07a-461c-9f18-4dfc9162edc5
+		summarizeBy: sum
+		sourceColumn: unique_search_records_seen
+
+		annotation SummarizationSetBy = Automatic
+
+	column exact_district_records_seen
+		dataType: int64
+		formatString: 0
+		lineageTag: c78ea986-d4ff-49f0-bb1d-9b844489f655
+		summarizeBy: sum
+		sourceColumn: exact_district_records_seen
+
+		annotation SummarizationSetBy = Automatic
+
+	column eligible_active_ltd_records_seen
+		dataType: int64
+		formatString: 0
+		lineageTag: f4898191-f117-4e0b-9df7-32662b386996
+		summarizeBy: sum
+		sourceColumn: eligible_active_ltd_records_seen
+
+		annotation SummarizationSetBy = Automatic
+
+	column other_exact_district_records_seen
+		dataType: int64
+		formatString: 0
+		lineageTag: fcf5cdd4-b1f1-41f7-8ef0-f9d7ea174da3
+		summarizeBy: sum
+		sourceColumn: other_exact_district_records_seen
+
+		annotation SummarizationSetBy = Automatic
+
+	column stop_reason
+		dataType: string
+		lineageTag: 2765fa3f-7880-416e-bd54-675bb3906e85
+		summarizeBy: none
+		sourceColumn: stop_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column hit_count_stable
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cf2cdb1d-d1e2-4b20-9ede-28cb806ba66a
+		summarizeBy: none
+		sourceColumn: hit_count_stable
+
+		annotation SummarizationSetBy = Automatic
+
+	column discovery_exhausted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 72db7388-23b5-44b3-bc3c-828bed1ac18c
+		summarizeBy: none
+		sourceColumn: discovery_exhausted
+
+		annotation SummarizationSetBy = Automatic
+
+	partition district_summary = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\CravenData\new_data_validation\ch_full_runs\accountant20\exports\district_summary.csv"),[Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"district", type text}, {"accountant", type text}, {"reported_hits_observed", type text}, {"latest_reported_hits", Int64.Type}, {"unique_search_records_seen", Int64.Type}, {"exact_district_records_seen", Int64.Type}, {"eligible_active_ltd_records_seen", Int64.Type}, {"other_exact_district_records_seen", Int64.Type}, {"stop_reason", type text}, {"hit_count_stable", type logical}, {"discovery_exhausted", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

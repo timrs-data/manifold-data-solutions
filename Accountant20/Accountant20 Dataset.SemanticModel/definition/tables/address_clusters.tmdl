@@ -1,0 +1,56 @@
+table address_clusters
+	lineageTag: 128d33ef-7eec-4706-b91b-63ea844ac0d7
+
+	column registered_office_address_key
+		dataType: string
+		lineageTag: fb2b4a01-ca72-4766-9195-6bf8c5405431
+		summarizeBy: none
+		sourceColumn: registered_office_address_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_display_address
+		dataType: string
+		lineageTag: 5b3a1ca5-5425-4def-a65c-a21705b808d7
+		summarizeBy: none
+		sourceColumn: registered_office_display_address
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_postcode
+		dataType: string
+		lineageTag: 227cf924-6331-477c-b7c9-a897914330ba
+		summarizeBy: none
+		sourceColumn: registered_office_postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column companies_at_address_in_batch
+		dataType: int64
+		formatString: 0
+		lineageTag: a015e388-fb14-4055-b2a6-d7ffc5943336
+		summarizeBy: none
+		sourceColumn: companies_at_address_in_batch
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_numbers
+		dataType: string
+		lineageTag: 5a8df7d4-7731-46d0-88b6-239a21a11c82
+		summarizeBy: none
+		sourceColumn: company_numbers
+
+		annotation SummarizationSetBy = Automatic
+
+	partition address_clusters = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\CravenData\new_data_validation\ch_full_runs\accountant20\exports\address_clusters.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"registered_office_address_key", type text}, {"registered_office_display_address", type text}, {"registered_office_postcode", type text}, {"companies_at_address_in_batch", Int64.Type}, {"company_numbers", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

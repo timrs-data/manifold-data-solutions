@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "17a7e6b332bb021dd373",
+  "position": {
+    "x": 1072,
+    "y": 144.08164595294875,
+    "z": 4,
+    "height": 80,
+    "width": 160,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "roles"
+                    }
+                  },
+                  "Property": "role_family"
+                }
+              },
+              "queryRef": "roles.role_family",
+              "nativeQueryRef": "role_family",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f6bd6ba659d82074e0cd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "roles"
+              }
+            },
+            "Property": "role_family"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

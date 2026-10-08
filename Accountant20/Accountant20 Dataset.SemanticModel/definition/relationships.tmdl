@@ -1,0 +1,40 @@
+relationship 67576030-9418-74b4-6cde-d8d45b4ec33a
+	fromColumn: psc_statements.company_number
+	toColumn: companies.company_number
+
+relationship 54e47677-733e-797c-d556-98e54fa667cd
+	fromColumn: filings.company_number
+	toColumn: companies.company_number
+
+relationship 9445a7e9-3fa3-e907-7d7a-67713da44612
+	fromColumn: roles.company_number
+	toColumn: companies.company_number
+
+relationship 0baeed4c-46a9-fc91-6848-abc077b3bf20
+	fromColumn: financial_history.company_number
+	toColumn: companies.company_number
+
+relationship bdcca62f-d7d6-6e98-4b0c-4267ce078a3e
+	fromColumn: companies.district
+	toColumn: district_summary.district
+
+relationship 33184b3b-19d0-895a-078e-bc5f9f4c8809
+	fromColumn: companies.registered_office_address_key
+	toColumn: address_clusters.registered_office_address_key
+
+relationship 6e7953b1-7545-8ca4-feff-3d361d179a9d
+	fromColumn: financial_coverage_by_district.district
+	toColumn: district_summary.district
+
+relationship 0464b028-ab3b-f51c-7542-7bc76a6bad39
+	fromColumn: financial_document_inventory.filing_key
+	toColumn: filings.filing_key
+
+relationship 8600330f-031f-42ed-a8b3-cd3f80c55926
+	fromColumn: financial_history.measure
+	toColumn: DimFinancialMeasure.measure
+
+relationship e02dd667-24df-485e-bb15-eecbe63c69f9
+	fromColumn: financial_coverage_by_district.measure
+	toColumn: DimFinancialMeasure.measure
+

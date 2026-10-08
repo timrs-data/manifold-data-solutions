@@ -1,0 +1,920 @@
+table companies
+	lineageTag: c4c5c0a1-4aa5-493e-8f90-6b2b5b1bb930
+
+	measure 'Verification Reason' =
+			
+			VAR DirectorCandidates =
+			    CALCULATE(
+			        COUNTROWS(roles),
+			        roles[manual_review_candidate] = TRUE(),
+			        roles[role_family] = "officer"
+			    )
+			
+			VAR PSCCandidates =
+			    CALCULATE(
+			        COUNTROWS(roles),
+			        roles[manual_review_candidate] = TRUE(),
+			        roles[role_family] = "psc"
+			    )
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			
+			    DirectorCandidates > 0 && PSCCandidates > 0,
+			        "Director + PSC verification actions due",
+			
+			    DirectorCandidates > 0,
+			        "Director verification action due",
+			
+			    PSCCandidates > 0,
+			        "PSC verification action due",
+			
+			    BLANK()
+			)
+		lineageTag: 230d6475-bbf7-4b96-a798-00f827730b49
+
+	measure 'Verification Reason2' =
+			
+			VAR DirectorDue =
+			    CALCULATE(
+			        COUNTROWS(roles),
+			        roles[manual_review_candidate] = TRUE(),
+			        roles[role_family] = "officer"
+			    )
+			
+			VAR PSCDue =
+			    CALCULATE(
+			        COUNTROWS(roles),
+			        roles[manual_review_candidate] = TRUE(),
+			        roles[role_family] = "psc"
+			    )
+			
+			VAR DirectorOverdue =
+			    CALCULATE(
+			        COUNTROWS(roles),
+			        roles[manual_review_candidate] = TRUE(),
+			        roles[role_family] = "officer",
+			        roles[published_due_date_has_passed] = TRUE()
+			    )
+			
+			VAR PSCOverdue =
+			    CALCULATE(
+			        COUNTROWS(roles),
+			        roles[manual_review_candidate] = TRUE(),
+			        roles[role_family] = "psc",
+			        roles[published_due_date_has_passed] = TRUE()
+			    )
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			
+			    DirectorOverdue > 0 && PSCOverdue > 0,
+			        "Director + PSC verification deadlines passed",
+			
+			    DirectorOverdue > 0 && PSCDue > 0,
+			        "Director verification deadline passed + PSC action due",
+			
+			    PSCOverdue > 0 && DirectorDue > 0,
+			        "PSC verification deadline passed + Director action due",
+			
+			    DirectorOverdue > 0,
+			        "Director verification deadline passed",
+			
+			    PSCOverdue > 0,
+			        "PSC verification deadline passed",
+			
+			    DirectorDue > 0 && PSCDue > 0,
+			        "Director + PSC verification actions due",
+			
+			    DirectorDue > 0,
+			        "Director verification action due",
+			
+			    PSCDue > 0,
+			        "PSC verification action due",
+			
+			    BLANK()
+			)
+		lineageTag: 00c188f9-9e77-4be3-a077-400a8b6f649a
+
+	measure 'Has Verification Candidate' =
+			
+			VAR Candidates =
+			    CALCULATE(
+			        COUNTROWS(roles),
+			        roles[manual_review_candidate] = TRUE()
+			    )
+			RETURN
+			IF(Candidates > 0, 1, 0)
+		formatString: 0
+		lineageTag: 22c822bd-c2e2-45b9-ad0e-11dd74417243
+
+	column company_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 011d46da-1c1e-49f3-93d7-d817e58aeecb
+		summarizeBy: none
+		sourceColumn: company_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column district
+		dataType: string
+		lineageTag: 4bf87a52-e9d7-4c27-bc4e-a92b857c0f3d
+		summarizeBy: none
+		sourceColumn: district
+
+		annotation SummarizationSetBy = Automatic
+
+	column accountant
+		dataType: string
+		lineageTag: 134328d6-6e8f-47a0-8eb4-4d23384eeaac
+		summarizeBy: none
+		sourceColumn: accountant
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: 939610a0-2f57-4e73-b373-aaf6542ec85c
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column accounts_filings_in_five_years_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 4cf030c5-6e40-40f7-a3b5-983c60b84f23
+		summarizeBy: sum
+		sourceColumn: accounts_filings_in_five_years_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column accounts_next_due_legacy
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5f70c15d-6841-4229-bcf7-90aabb03fc96
+		summarizeBy: none
+		sourceColumn: accounts_next_due_legacy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column accounts_next_made_up_to_legacy
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fb2a5913-e411-407f-bc37-c67e55e49bf3
+		summarizeBy: none
+		sourceColumn: accounts_next_made_up_to_legacy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column accounts_overdue_legacy
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5d6cddf7-4cb1-48fd-b7e0-b9ed0cdca2d5
+		summarizeBy: none
+		sourceColumn: accounts_overdue_legacy
+
+		annotation SummarizationSetBy = Automatic
+
+	column accounts_reference_day
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f6ec601-02aa-4fe0-aa9d-94bd8615f30c
+		summarizeBy: sum
+		sourceColumn: accounts_reference_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column accounts_reference_month
+		dataType: int64
+		formatString: 0
+		lineageTag: 73b092a0-3987-4d7a-9d42-2a384cccd759
+		summarizeBy: sum
+		sourceColumn: accounts_reference_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column as_of_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7312739e-dfb1-45e3-8e55-3ebea42b3cae
+		summarizeBy: none
+		sourceColumn: as_of_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column capital_filings_in_five_years_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 87e7a2b7-1ef4-4537-9658-f39fade78353
+		summarizeBy: sum
+		sourceColumn: capital_filings_in_five_years_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column cic_field_quality
+		dataType: string
+		lineageTag: 89da1ec2-5aca-439b-8725-d9009feeee17
+		summarizeBy: none
+		sourceColumn: cic_field_quality
+
+		annotation SummarizationSetBy = Automatic
+
+	column companies_at_registered_office_in_batch
+		dataType: int64
+		formatString: 0
+		lineageTag: 800e7020-1110-460d-a698-aed9517e49d0
+		summarizeBy: sum
+		sourceColumn: companies_at_registered_office_in_batch
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_age_completed_years
+		dataType: int64
+		formatString: 0
+		lineageTag: d5f02b5f-4ee3-4090-a5fa-aadd547d7e82
+		summarizeBy: sum
+		sourceColumn: company_age_completed_years
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_in_scope
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a099ef1b-b5bd-4e4c-b2f5-4056787f1248
+		summarizeBy: none
+		sourceColumn: company_in_scope
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_status
+		dataType: string
+		lineageTag: 3928c47b-5364-4d53-adcd-d05ff88761a2
+		summarizeBy: none
+		sourceColumn: company_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_status_detail
+		dataType: string
+		lineageTag: 4a02c506-ce3f-4eaa-aeba-97a51b212c63
+		summarizeBy: none
+		sourceColumn: company_status_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_subtype
+		dataType: string
+		lineageTag: de96dc0e-0b6e-4d1d-8b38-ce803339c9a8
+		summarizeBy: none
+		sourceColumn: company_subtype
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_type
+		dataType: string
+		lineageTag: cd573222-3bcc-4c3a-b923-50d48a5fb393
+		summarizeBy: none
+		sourceColumn: company_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_type_description
+		dataType: string
+		lineageTag: dcac8743-5739-44b1-b704-d3b453317077
+		summarizeBy: none
+		sourceColumn: company_type_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column confirmation_statement_filing_deadline
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 45f72188-301b-4812-9868-22077d923b4d
+		summarizeBy: none
+		sourceColumn: confirmation_statement_filing_deadline
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column confirmation_statement_last_reference_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1fd432c5-db80-4cca-8463-2a4b7036c696
+		summarizeBy: none
+		sourceColumn: confirmation_statement_last_reference_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column confirmation_statement_overdue
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 355dcc32-8c19-4af7-86a3-bb13ab09196d
+		summarizeBy: none
+		sourceColumn: confirmation_statement_overdue
+
+		annotation SummarizationSetBy = Automatic
+
+	column confirmation_statement_reference_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 76b28c5d-2b09-4384-8fcb-cafec6649570
+		summarizeBy: none
+		sourceColumn: confirmation_statement_reference_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column core_retrieval_complete
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cb3254ee-d86f-4997-be51-e26a042b5d3d
+		summarizeBy: none
+		sourceColumn: core_retrieval_complete
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_director_count_if_complete
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b1bee9c-978e-45bb-afac-bbeb2bf23c32
+		summarizeBy: sum
+		sourceColumn: current_director_count_if_complete
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_individual_directors_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: acf34647-9561-4fb2-86fd-9287249d6bcf
+		summarizeBy: sum
+		sourceColumn: current_individual_directors_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_individual_psc_count_if_complete
+		dataType: int64
+		formatString: 0
+		lineageTag: eb25ddc9-d47a-4904-9818-49abbf1d83bd
+		summarizeBy: sum
+		sourceColumn: current_individual_psc_count_if_complete
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_individual_pscs_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 3769d7a7-a60a-40ac-92c5-e61bd7a3a62d
+		summarizeBy: sum
+		sourceColumn: current_individual_pscs_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_protected_psc_records_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 503a492b-2b76-4d8d-bc76-8b093e9374d3
+		summarizeBy: sum
+		sourceColumn: current_protected_psc_records_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_unsupported_roles_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f3f1cb9-c058-4381-8276-ce51a72bc01a
+		summarizeBy: sum
+		sourceColumn: current_unsupported_roles_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_history_complete
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 07825fb8-4eab-4801-8ce7-e69659d4f696
+		summarizeBy: none
+		sourceColumn: filing_history_complete
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_history_invalid_dates_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ebd5c37-dce1-437b-9825-8d7f2805697f
+		summarizeBy: sum
+		sourceColumn: filing_history_invalid_dates_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_history_records_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 261702ff-c4e7-487f-8e95-c72e52db82a1
+		summarizeBy: sum
+		sourceColumn: filing_history_records_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column filing_history_status
+		dataType: string
+		lineageTag: 55f57488-481d-4b7d-8532-6fab695df658
+		summarizeBy: none
+		sourceColumn: filing_history_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_strike_off_activity_in_five_years
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 552db981-1a7a-4042-8189-e7f39da4312c
+		summarizeBy: none
+		sourceColumn: has_strike_off_activity_in_five_years
+
+		annotation SummarizationSetBy = Automatic
+
+	column historical_roles_excluded
+		dataType: int64
+		formatString: 0
+		lineageTag: 24805cd0-0331-4509-9dc3-641a631f125d
+		summarizeBy: sum
+		sourceColumn: historical_roles_excluded
+
+		annotation SummarizationSetBy = Automatic
+
+	column incorporated_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 358893a3-1dba-4314-88af-5b6fc426a71c
+		summarizeBy: none
+		sourceColumn: incorporated_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column individual_psc_details_complete
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 58709e3d-8830-4563-936f-cb12786f0616
+		summarizeBy: none
+		sourceColumn: individual_psc_details_complete
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_community_interest_company
+		dataType: string
+		lineageTag: d2130dce-726b-4c69-90be-89b604d97fc4
+		summarizeBy: none
+		sourceColumn: is_community_interest_company
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_accounts_made_up_to_legacy
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 89f3f770-538a-41ca-b282-00e9c0e92555
+		summarizeBy: none
+		sourceColumn: last_accounts_made_up_to_legacy
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column last_accounts_period_end_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 06e7cb63-be51-45ce-bc74-a6b2b0d82782
+		summarizeBy: none
+		sourceColumn: last_accounts_period_end_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column last_accounts_period_start_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: af99aa40-ebbf-4b58-9804-a5df19bbb6d4
+		summarizeBy: none
+		sourceColumn: last_accounts_period_start_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column last_accounts_type
+		dataType: string
+		lineageTag: 749520d9-5991-4873-ba08-224440a016a2
+		summarizeBy: none
+		sourceColumn: last_accounts_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column latest_accounts_filing_processed_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8e5479b2-1ab7-48cb-9dff-edca61bfc336
+		summarizeBy: none
+		sourceColumn: latest_accounts_filing_processed_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column latest_capital_filing_processed_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d822129e-9179-4679-bc64-c46e530fee2b
+		summarizeBy: none
+		sourceColumn: latest_capital_filing_processed_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column latest_strike_off_filing_processed_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cd06f7c0-aca9-47b0-8d4e-88900359a908
+		summarizeBy: none
+		sourceColumn: latest_strike_off_filing_processed_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column manual_review_candidates_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 83e99fd6-af92-49ca-9e65-f682545766ad
+		summarizeBy: sum
+		sourceColumn: manual_review_candidates_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_accounts_due_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 13592abd-ea19-46ca-965d-13651712bb60
+		summarizeBy: none
+		sourceColumn: next_accounts_due_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column next_accounts_overdue
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 39d7dded-3d8f-4c45-8530-de85622ad3aa
+		summarizeBy: none
+		sourceColumn: next_accounts_overdue
+
+		annotation SummarizationSetBy = Automatic
+
+	column next_accounts_period_end_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 30c432d3-ff52-4a5f-898c-51b6be11eafa
+		summarizeBy: none
+		sourceColumn: next_accounts_period_end_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column next_accounts_period_start_on
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 05e13f98-6eec-42ca-9ae9-78f4ad26f5ec
+		summarizeBy: none
+		sourceColumn: next_accounts_period_start_on
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column officers_complete
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1058bb6c-7cb0-484c-9ce1-37d6f759103f
+		summarizeBy: none
+		sourceColumn: officers_complete
+
+		annotation SummarizationSetBy = Automatic
+
+	column officers_retrieval_status
+		dataType: string
+		lineageTag: ac45bc04-c82f-4de9-9831-b051bff7ed0a
+		summarizeBy: none
+		sourceColumn: officers_retrieval_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column partial_data_available
+		dataType: string
+		lineageTag: d934766a-8741-451f-8898-f11ae680e345
+		summarizeBy: none
+		sourceColumn: partial_data_available
+
+		annotation SummarizationSetBy = Automatic
+
+	column postcode_quality
+		dataType: string
+		lineageTag: e18af247-dcf7-45d8-9084-f6ca5ee2389c
+		summarizeBy: none
+		sourceColumn: postcode_quality
+
+		annotation SummarizationSetBy = Automatic
+
+	column profile_retrieval_status
+		dataType: string
+		lineageTag: 16a56d80-00e2-4c91-8da3-98ee61fc6368
+		summarizeBy: none
+		sourceColumn: profile_retrieval_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column profile_retrieved_at_utc
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0aa4b09d-d080-47f7-941c-4234f15e4b21
+		summarizeBy: none
+		sourceColumn: profile_retrieved_at_utc
+
+		annotation SummarizationSetBy = Automatic
+
+	column profile_source_url
+		dataType: string
+		lineageTag: e831565a-7fdf-46a8-8c37-df82b1847645
+		summarizeBy: none
+		sourceColumn: profile_source_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column psc_register_observation
+		dataType: string
+		lineageTag: be5d6ce2-c1b5-44df-b630-e1f1577ed71b
+		summarizeBy: none
+		sourceColumn: psc_register_observation
+
+		annotation SummarizationSetBy = Automatic
+
+	column psc_statements_complete
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b446f0f8-16ed-4d04-82ab-3e67b3890eff
+		summarizeBy: none
+		sourceColumn: psc_statements_complete
+
+		annotation SummarizationSetBy = Automatic
+
+	column psc_statements_retrieval_status
+		dataType: string
+		lineageTag: 9b713d19-446e-494b-a387-a80ae2ec4d0b
+		summarizeBy: none
+		sourceColumn: psc_statements_retrieval_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column pscs_complete
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4d62a203-9e89-4164-b4b0-b9b5b0141080
+		summarizeBy: none
+		sourceColumn: pscs_complete
+
+		annotation SummarizationSetBy = Automatic
+
+	column pscs_retrieval_status
+		dataType: string
+		lineageTag: 451eee66-4cee-4e5f-9e99-24023ccb2e65
+		summarizeBy: none
+		sourceColumn: pscs_retrieval_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column public_register_url
+		dataType: string
+		lineageTag: b3cc7b88-ebd5-48c6-adc6-f3e4e1fbe504
+		summarizeBy: none
+		sourceColumn: public_register_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_address_key
+		dataType: string
+		lineageTag: 117cb324-83d6-4541-849b-68e0235ab15e
+		summarizeBy: none
+		sourceColumn: registered_office_address_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_address_line_1
+		dataType: string
+		lineageTag: 4e8f988e-3e25-4a9f-980f-e7df683c934b
+		summarizeBy: none
+		sourceColumn: registered_office_address_line_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_address_line_2
+		dataType: string
+		lineageTag: d81192af-11df-4c6b-a06e-60cb2d7d4585
+		summarizeBy: none
+		sourceColumn: registered_office_address_line_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_care_of
+		dataType: string
+		lineageTag: ec67e899-0fb9-436e-bcdc-f672a5f341eb
+		summarizeBy: none
+		sourceColumn: registered_office_care_of
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_country
+		dataType: string
+		lineageTag: f8f270e0-f190-469b-92d2-7380bd6f243d
+		summarizeBy: none
+		sourceColumn: registered_office_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_display_address
+		dataType: string
+		lineageTag: c39387b1-7393-4e4b-a474-6c4e61dae49c
+		summarizeBy: none
+		sourceColumn: registered_office_display_address
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_district
+		dataType: string
+		lineageTag: cc8d7e5c-b2b8-4d51-9d37-fa22b568b828
+		summarizeBy: none
+		sourceColumn: registered_office_district
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_is_in_dispute
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 11a80e0c-6e55-4555-b142-b605b2c34a78
+		summarizeBy: none
+		sourceColumn: registered_office_is_in_dispute
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_locality
+		dataType: string
+		lineageTag: 1fcf83dc-e31b-46c9-a12c-055abecee486
+		summarizeBy: none
+		sourceColumn: registered_office_locality
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_po_box
+		dataType: string
+		lineageTag: e0c5ffc4-3a6d-4b1a-8f7a-aa6893903155
+		summarizeBy: none
+		sourceColumn: registered_office_po_box
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_postal_code
+		dataType: string
+		lineageTag: 51bc1fea-9a44-49e3-9a37-9ba7efa53edf
+		summarizeBy: none
+		sourceColumn: registered_office_postal_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_postcode
+		dataType: string
+		lineageTag: 5d71094e-b69e-4bf2-af18-2b07b54beaaf
+		summarizeBy: none
+		sourceColumn: registered_office_postcode
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_premises
+		dataType: string
+		lineageTag: c870903d-0826-4cc3-9574-84dcf015ae6f
+		summarizeBy: none
+		sourceColumn: registered_office_premises
+
+		annotation SummarizationSetBy = Automatic
+
+	column registered_office_region
+		dataType: string
+		lineageTag: e4bbca59-4da2-4f24-b925-85b2b52ce690
+		summarizeBy: none
+		sourceColumn: registered_office_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column registration_jurisdiction
+		dataType: string
+		lineageTag: 3e4198a0-e940-41b4-b707-a7269ad94b72
+		summarizeBy: none
+		sourceColumn: registration_jurisdiction
+
+		annotation SummarizationSetBy = Automatic
+
+	column registration_jurisdiction_description
+		dataType: string
+		lineageTag: 5cbc0063-9460-43f6-b283-df23c462fdad
+		summarizeBy: none
+		sourceColumn: registration_jurisdiction_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_candidate_roles_within_14_days_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: b194517b-63f4-4008-8247-a0563d5ed3ae
+		summarizeBy: sum
+		sourceColumn: review_candidate_roles_within_14_days_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_candidate_roles_within_30_days_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 22d17b23-b6ae-479f-bbb8-d698c26d8671
+		summarizeBy: sum
+		sourceColumn: review_candidate_roles_within_30_days_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_candidate_roles_within_60_days_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e3c60d1-2e9b-4826-ba9b-29ccd5bd04a6
+		summarizeBy: sum
+		sourceColumn: review_candidate_roles_within_60_days_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column shared_registered_office_in_batch
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c8ceb303-9736-485f-aa71-c767e5f78007
+		summarizeBy: none
+		sourceColumn: shared_registered_office_in_batch
+
+		annotation SummarizationSetBy = Automatic
+
+	column sic_codes
+		dataType: string
+		lineageTag: e437a675-45a2-42f3-85cc-82ee75b94b00
+		summarizeBy: none
+		sourceColumn: sic_codes
+
+		annotation SummarizationSetBy = Automatic
+
+	column strike_off_filings_in_five_years_observed
+		dataType: int64
+		formatString: 0
+		lineageTag: a45885dc-054d-490c-bfe9-49d46d8e7541
+		summarizeBy: sum
+		sourceColumn: strike_off_filings_in_five_years_observed
+
+		annotation SummarizationSetBy = Automatic
+
+	column undeliverable_registered_office_address
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ddf5ee3d-fda5-4919-8cc1-2f83b82e3cd0
+		summarizeBy: none
+		sourceColumn: undeliverable_registered_office_address
+
+		annotation SummarizationSetBy = Automatic
+
+	partition companies = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\CravenData\new_data_validation\ch_full_runs\accountant20\exports\companies.csv"),[Delimiter=",", Columns=89, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"company_number", Int64.Type}, {"district", type text}, {"accountant", type text}, {"company_name", type text}, {"accounts_filings_in_five_years_observed", Int64.Type}, {"accounts_next_due_legacy", type date}, {"accounts_next_made_up_to_legacy", type date}, {"accounts_overdue_legacy", type logical}, {"accounts_reference_day", Int64.Type}, {"accounts_reference_month", Int64.Type}, {"as_of_date", type date}, {"capital_filings_in_five_years_observed", Int64.Type}, {"cic_field_quality", type text}, {"companies_at_registered_office_in_batch", Int64.Type}, {"company_age_completed_years", Int64.Type}, {"company_in_scope", type logical}, {"company_status", type text}, {"company_status_detail", type text}, {"company_subtype", type text}, {"company_type", type text}, {"company_type_description", type text}, {"confirmation_statement_filing_deadline", type date}, {"confirmation_statement_last_reference_date", type date}, {"confirmation_statement_overdue", type logical}, {"confirmation_statement_reference_date", type date}, {"core_retrieval_complete", type logical}, {"current_director_count_if_complete", Int64.Type}, {"current_individual_directors_observed", Int64.Type}, {"current_individual_psc_count_if_complete", Int64.Type}, {"current_individual_pscs_observed", Int64.Type}, {"current_protected_psc_records_observed", Int64.Type}, {"current_unsupported_roles_observed", Int64.Type}, {"filing_history_complete", type logical}, {"filing_history_invalid_dates_observed", Int64.Type}, {"filing_history_records_observed", Int64.Type}, {"filing_history_status", type text}, {"has_strike_off_activity_in_five_years", type logical}, {"historical_roles_excluded", Int64.Type}, {"incorporated_on", type date}, {"individual_psc_details_complete", type logical}, {"is_community_interest_company", type text}, {"last_accounts_made_up_to_legacy", type date}, {"last_accounts_period_end_on", type date}, {"last_accounts_period_start_on", type date}, {"last_accounts_type", type text}, {"latest_accounts_filing_processed_on", type date}, {"latest_capital_filing_processed_on", type date}, {"latest_strike_off_filing_processed_on", type date}, {"manual_review_candidates_observed", Int64.Type}, {"next_accounts_due_on", type date}, {"next_accounts_overdue", type logical}, {"next_accounts_period_end_on", type date}, {"next_accounts_period_start_on", type date}, {"officers_complete", type logical}, {"officers_retrieval_status", type text}, {"partial_data_available", type text}, {"postcode_quality", type text}, {"profile_retrieval_status", type text}, {"profile_retrieved_at_utc", type datetime}, {"profile_source_url", type text}, {"psc_register_observation", type text}, {"psc_statements_complete", type logical}, {"psc_statements_retrieval_status", type text}, {"pscs_complete", type logical}, {"pscs_retrieval_status", type text}, {"public_register_url", type text}, {"registered_office_address_key", type text}, {"registered_office_address_line_1", type text}, {"registered_office_address_line_2", type text}, {"registered_office_care_of", type text}, {"registered_office_country", type text}, {"registered_office_display_address", type text}, {"registered_office_district", type text}, {"registered_office_is_in_dispute", type logical}, {"registered_office_locality", type text}, {"registered_office_po_box", type text}, {"registered_office_postal_code", type text}, {"registered_office_postcode", type text}, {"registered_office_premises", type text}, {"registered_office_region", type text}, {"registration_jurisdiction", type text}, {"registration_jurisdiction_description", type text}, {"review_candidate_roles_within_14_days_observed", Int64.Type}, {"review_candidate_roles_within_30_days_observed", Int64.Type}, {"review_candidate_roles_within_60_days_observed", Int64.Type}, {"shared_registered_office_in_batch", type logical}, {"sic_codes", type text}, {"strike_off_filings_in_five_years_observed", Int64.Type}, {"undeliverable_registered_office_address", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
